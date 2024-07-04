@@ -19,7 +19,7 @@ function ReservationForm({ cabin }) {
         </div> */}
       </div>
 
-      <form className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col">
+      <form className="bg-primary-900 py-4 px-6 md:py-10 md:px-16 text-lg flex gap-5 flex-col">
         <div className="space-y-2">
           <label htmlFor="numGuests">How many guests?</label>
           <select
@@ -46,15 +46,15 @@ function ReservationForm({ cabin }) {
           <textarea
             name="observations"
             id="observations"
-            className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+            className="px-2.5 py-1.5 md:px-5 md:py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
             placeholder="Any pets, allergies, special requirements, etc.?"
           />
         </div>
 
-        <div className="flex justify-end items-center gap-6">
+        <div className="flex justify-between md:justify-end items-center gap-2 md:gap-6">
           <p className="text-primary-300 text-base">Start by selecting dates</p>
 
-          <button className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300">
+          <button className="bg-accent-500 px-2 py-1 md:px-8 md:py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300">
             Reserve now
           </button>
         </div>

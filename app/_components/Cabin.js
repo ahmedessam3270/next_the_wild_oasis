@@ -16,8 +16,8 @@ function Cabin({ cabin }) {
         />
       </div>
 
-      <div className="p-4 md:p-0 -translate-y-40 md:translate-y-0 ">
-        <h3 className="text-accent-100 font-black text-7xl translate-x-[-50px] md:translate-x-[-254px] bg-primary-950 p-6 pb-1 w-[150%] mb-14 md:mb-0">
+      <div className="p-4 md:p-0 -translate-y-28 md:translate-y-0 ">
+        <h3 className="text-accent-100 font-black text-5xl md:text-7xl translate-x-[-2rem] md:translate-x-[-254px] bg-primary-950 p-2 md:p-6 pb-1 w-[100%] md:w-[150%] mb-14 md:mb-0">
           Cabin {name}
         </h3>
 
