@@ -1,23 +1,23 @@
 "use client";
-function ReservationForm({ cabin }) {
+function ReservationForm({ cabin, user }) {
   // CHANGE
   const { maxCapacity } = cabin;
 
   return (
     <div className="scale-[1.01]">
-      <div className="bg-primary-800 text-primary-300 px-16 py-2 flex justify-between items-center">
-        <p>Logged in as</p>
+      <div className="bg-primary-800 text-primary-300 px-4 md:px-16 py-2 flex justify-between items-center">
+        <p>Logged in as </p>
 
-        {/* <div className='flex gap-4 items-center'>
+        <div className="flex gap-4 items-center">
           <img
             // Important to display google profile images
-            referrerPolicy='no-referrer'
-            className='h-8 rounded-full'
-            src={user.image}
-            alt={user.name}
+            referrerPolicy="no-referrer"
+            className="h-8 rounded-full"
+            src={user?.image}
+            alt={user?.name}
           />
-          <p>{user.name}</p>
-        </div> */}
+          <p>{user?.name}</p>
+        </div>
       </div>
 
       <form className="bg-primary-900 py-4 px-6 md:py-10 md:px-16 text-lg flex gap-5 flex-col">
