@@ -23,33 +23,48 @@ export async function updateGuest(formData) {
   revalidatePath("/account/profile");
 }
 
-export async function updateReservation(updatedFields) {
+export async function updateReservation(formData) {
+  // 1. AUTHENTICATION
+  // to ensure that there's a user loggedIn
   const session = await auth();
-  const reservationId = +updatedFields.get("id");
   if (!session) throw new Error("You must be logged in");
+
+  // 2. AUTHORIZATION
+  // to fetch all the bookings that this guest have booked already and then map over it to list their Ids
   const guestBookings = await getBookings(session.user.guestId);
   const guestBookingIds = guestBookings.map((booking) => booking.id);
+
+  // to get the Id of the reservation (being sent by the hidden input we make)
+  // to use it to make sure that this reservation being edited is one of the users reservations
+  const reservationId = Number(formData.get("reservationId"));
+
+  // to make sure that this user is updating one of their reservations in the list and not others reservation
   if (!guestBookingIds.includes(reservationId)) {
     throw new Error("You are not allowed to delete this booking");
   }
 
-  const id = +updatedFields.get("id");
-  const numGuests = +updatedFields.get("numGuests");
-  const observations = updatedFields.get("observations");
-  const latestUpdatedFields = { id, numGuests, observations };
+  // to prepare the values that will get populated to the database
+  const updatedFields = {
+    numGuests: Number(formData.get("numGuests")),
+    observations: formData.get("observations").slice(0, 1000),
+  };
 
-  const { data, error } = await supabase
+  // 3. MUTATION
+  const { error } = await supabase
     .from("bookings")
-    .update(latestUpdatedFields)
-    .eq("id", id)
+    .update(updatedFields)
+    .eq("id", reservationId)
     .select()
     .single();
 
+  // 4.ERROR HANDLING
   if (error) {
     console.error(error);
     throw new Error("Booking could not be updated");
   }
-  revalidatePath(`/account/reservations/edit/${id}`);
+  // 5. REVALIDATING AND REDIRECTING
+  //    revalidating the path and also redirecting back to the reservations
+  revalidatePath(`/account/reservations/edit/${reservationId}`);
   redirect("/account/reservations");
 }
 
