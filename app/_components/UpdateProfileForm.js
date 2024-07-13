@@ -54,7 +54,7 @@ function UpdateProfileForm({ guest, children }) {
       </div>
 
       <div className="flex justify-end items-center gap-6">
-        <SubmitButton>Update Profile</SubmitButton>
+        <SubmitButton pendingLabel="Updating...">Update Profile</SubmitButton>
       </div>
     </form>
   );
