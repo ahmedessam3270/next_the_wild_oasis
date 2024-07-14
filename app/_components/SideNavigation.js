@@ -30,7 +30,7 @@ function SideNavigation() {
   const pathname = usePathname();
   return (
     <nav className="border-r border-primary-900">
-      <ul className="flex flex-col gap-2 h-full text-lg">
+      <ul className="flex md:flex-col justify-between md:justify-start gap-2 h-full text-lg">
         {navLinks.map((link) => (
           <li key={link.name}>
             <Link
@@ -40,12 +40,12 @@ function SideNavigation() {
               href={link.href}
             >
               {link.icon}
-              <span>{link.name}</span>
+              <span className="hidden md:inline-block">{link.name}</span>
             </Link>
           </li>
         ))}
 
-        <li className="mt-auto">
+        <li className="md:mt-auto">
           <SignOutButton />
         </li>
       </ul>
