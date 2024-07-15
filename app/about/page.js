@@ -87,7 +87,7 @@ export default async function Page() {
       <div className="md:translate-x-[43%] md:-translate-y-3/4">
         <Link
           href="/cabins"
-          className="block md:inline-block mt-4 bg-accent-500 px-8 py-5 text-center text-primary-800 text-2xl font-semibold hover:bg-accent-600 transition-all"
+          className="block md:inline-block mt-4 bg-accent-500 px-8 py-5 text-center text-primary-800 text-xl font-semibold hover:bg-accent-600 transition-all"
         >
           Explore our luxury cabins
         </Link>
